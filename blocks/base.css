@@ -1,0 +1,65 @@
+     :root {
+        --panel-bg: rgba(6, 11, 28, 0.72);
+        --panel-bg-strong: rgba(6, 11, 28, 0.88);
+        --panel-border: rgba(255, 255, 255, 0.14);
+        --text: #f8fbff;
+        --muted: rgba(248, 251, 255, 0.72);
+        --muted-2: rgba(248, 251, 255, 0.52);
+        --accent: #4f9cff;
+        --accent-2: #8b5cf6;
+        --accent-3: #22d3ee;
+        --danger: #ff5f7e;
+        --success: #66e6a8;
+        --orbit: rgba(255, 255, 255, 0.13);
+        --shadow: rgba(0, 0, 0, 0.48);
+        --radius-xl: 26px;
+        --radius-lg: 20px;
+        --radius-pill: 999px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
+
+      body {
+        min-height: 100vh;
+        overflow: hidden;
+        color: var(--text);
+        font-family: Inter, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background:
+          radial-gradient(
+            circle at 50% 45%,
+            rgba(33, 86, 166, 0.24),
+            transparent 28%
+          ),
+          radial-gradient(
+            circle at 20% 20%,
+            rgba(104, 60, 190, 0.2),
+            transparent 24%
+          ),
+          radial-gradient(
+            circle at 82% 78%,
+            rgba(34, 211, 238, 0.08),
+            transparent 24%
+          ),
+          radial-gradient(ellipse at center, #081020 0%, #02040a 62%, #000 100%);
+      }
+
+      button,
+      input,
+      select {
+        font: inherit;
+      }
+
+      button,
+      select {
+        border: 0;
+      }

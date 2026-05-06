@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./blocks/base.css" />
+    <link rel="stylesheet" href="./blocks/layout.css" />
+    <link rel="stylesheet" href="./blocks/ui-panel.css" />
+    <link rel="stylesheet" href="./blocks/mini-map.css" />
+    <link rel="stylesheet" href="./blocks/orbits.css" />
+    <link rel="stylesheet" href="./blocks/planets.css" />
+    <link rel="stylesheet" href="./blocks/effects.css" />
+    <link rel="stylesheet" href="./blocks/camera.css" />
+    <link rel="stylesheet" href="./blocks/responsive.css" />
+    <title>Solar System Simulator</title>
+  </head>
+  <body>
+    <main class="app" id="app">
+      <div class="nebula"></div>
+      <div class="stars" id="stars"></div>
+      <div class="top-glow"></div>
+      <div class="scanline"></div>
+
+      <section class="ui-panel" aria-label="Solar system controls">
+        <div class="brand-row">
+          <div class="title-wrap">
+            <span class="eyebrow">Interactive model</span>
+            <h1>Solar System</h1>
+          </div>
+          <div class="status-pill">
+            <span class="status-dot"></span>
+            <span id="statusText">Running</span>
+          </div>
+        </div>
+
+        <div class="controls">
+          <button class="btn" id="playPause" type="button">Pause</button>
+          <button class="btn secondary" id="focusSun" type="button">Sun</button>
+          <button class="btn secondary" id="toggleLabels" type="button">
+            Labels
+          </button>
+          <button class="btn danger" id="resetView" type="button">Reset</button>
+          <button class="btn secondary" id="toggleOrbits" type="button">
+            Orbits
+          </button>
+          <button class="btn secondary" id="cinemaMode" type="button">
+            Cinema
+          </button>
+          <button class="btn secondary" id="scaleMode" type="button">
+            Visual Scale
+          </button>
+        </div>
+
+        <div class="control-block">
+          <div class="control-row">
+            <span>Simulation Speed</span>
+            <span class="value-chip" id="speedValue">1.0x</span>
+          </div>
+          <input
+            type="range"
+            id="speedSlider"
+            min="0.1"
+            max="8"
+            step="0.1"
+            value="1"
+            aria-label="Simulation speed"
+          />
+        </div>
+
+        <div class="control-block planet-select-block">
+          <div class="control-row">
+            <span>Jump To Planet</span>
+            <span class="value-chip">Focus</span>
+          </div>
+          <select id="planetSelect" aria-label="Select planet to focus">
+            <option value="">Choose a planet</option>
+          </select>
+        </div>
+
+        <div class="metric-grid">
+          <div class="metric">
+            <span>Planets</span>
+            <strong>8 + Moon</strong>
+          </div>
+          <div class="metric">
+            <span>Camera</span>
+            <strong id="zoomValue">100%</strong>
+          </div>
+        </div>
+
+        <p class="info">
+          Click a planet to inspect it. Double-click a planet to focus the
+          camera. Drag to pan. Scroll to zoom. Press Space, R, L, O, S, or C.
+        </p>
+      </section>
+
+      <section class="planet-info" id="planetInfo" aria-live="polite">
+        <div class="planet-header">
+          <div class="planet-title-group">
+            <span class="planet-swatch" id="planetSwatch"></span>
+            <div class="planet-name" id="planetName">Planet</div>
+          </div>
+          <button
+            class="close-btn"
+            id="closeInfo"
+            type="button"
+            aria-label="Close planet details"
+          >
+            ×
+          </button>
+        </div>
+        <p class="planet-description" id="planetDescription"></p>
+        <div class="detail-list" id="planetDetails"></div>
+      </section>
+
+      <aside class="mini-map" aria-label="Solar system mini map">
+        <div class="mini-map-inner" id="miniMap"></div>
+      </aside>
+
+      <aside class="legend-card">
+        <strong>Mini Map</strong>
+        Planet positions update live. Visual scale is optimized for
+        presentation. Real scale uses compressed logarithmic spacing.
+      </aside>
+
+      <aside class="help-card">
+        Pro controls: mouse wheel zooms, drag pans, double-click focuses, Reset
+        returns to the full system. Scale switches between visual spacing and
+        real-distance inspired spacing.
+      </aside>
+
+      <section
+        class="system-stage"
+        id="systemStage"
+        aria-label="Animated solar system"
+      >
+        <div
+          class="sun"
+          id="sun"
+          role="button"
+          tabindex="0"
+          aria-label="Focus on Sun"
+        >
+          <span class="sun-label">Sun</span>
+        </div>
+        <div class="comet" id="comet"></div>
+      </section>
+    </main>
+
+    <script src="./js/main.js"></script>
+
+  </body>
+</html>

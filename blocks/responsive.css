@@ -1,0 +1,90 @@
+@media (max-width: 1050px) {
+        .mini-map,
+        .legend-card {
+          display: none;
+        }
+      }
+
+      @media (max-width: 850px) {
+        .ui-panel {
+          top: 12px;
+          left: 12px;
+          width: calc(100vw - 24px);
+          padding: 14px;
+          border-radius: 20px;
+        }
+
+        .controls {
+          grid-template-columns: repeat(4, 1fr);
+        }
+
+        .btn {
+          min-height: 38px;
+          padding: 9px 8px;
+          font-size: 0.76rem;
+        }
+
+        .metric-grid,
+        .info,
+        .planet-select-block {
+          display: none;
+        }
+
+        .planet-info {
+          right: 12px;
+          bottom: 12px;
+          width: calc(100vw - 24px);
+          padding: 16px;
+        }
+
+        .help-card {
+          display: none;
+        }
+
+        .system-stage {
+          width: min(94vmin, 780px);
+          height: min(94vmin, 780px);
+        }
+      }
+
+      @media (max-width: 520px) {
+        .brand-row {
+          align-items: flex-start;
+        }
+
+        .status-pill {
+          display: none;
+        }
+
+        .controls {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .control-row {
+          font-size: 0.84rem;
+        }
+
+        .planet-name {
+          font-size: 1.3rem;
+        }
+
+        .detail-item {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 4px;
+        }
+
+        .detail-item strong {
+          text-align: left;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.001ms !important;
+          animation-iteration-count: 1 !important;
+          scroll-behavior: auto !important;
+        }
+      }
