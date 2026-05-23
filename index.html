@@ -2,7 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link rel="stylesheet" href="./blocks/base.css" />
     <link rel="stylesheet" href="./blocks/layout.css" />
     <link rel="stylesheet" href="./blocks/ui-panel.css" />
@@ -12,79 +14,142 @@
     <link rel="stylesheet" href="./blocks/effects.css" />
     <link rel="stylesheet" href="./blocks/camera.css" />
     <link rel="stylesheet" href="./blocks/responsive.css" />
+
     <title>Solar System Simulator</title>
   </head>
+
   <body>
     <main class="app" id="app">
       <div class="nebula"></div>
-      <div class="stars" id="stars"></div>
+
+      <div class="stars stars-back" id="starsBack"></div>
+
+      <div class="stars stars-mid" id="starsMid"></div>
+
+      <div class="stars stars-front" id="starsFront"></div>
+
       <div class="top-glow"></div>
+
       <div class="scanline"></div>
 
       <section class="ui-panel" aria-label="Solar system controls">
         <div class="brand-row">
           <div class="title-wrap">
-            <span class="eyebrow">Interactive model</span>
+            <span class="eyebrow"> Interactive model </span>
+
             <h1>Solar System</h1>
           </div>
+
           <div class="status-pill">
             <span class="status-dot"></span>
-            <span id="statusText">Running</span>
+
+            <span id="statusText"> Running </span>
           </div>
         </div>
 
-        <div class="controls">
-          <button class="btn" id="playPause" type="button">Pause</button>
-          <button class="btn secondary" id="focusSun" type="button">Sun</button>
-          <button class="btn secondary" id="toggleLabels" type="button">
-            Labels
-          </button>
-          <button class="btn danger" id="resetView" type="button">Reset</button>
-          <button class="btn secondary" id="toggleOrbits" type="button">
-            Orbits
-          </button>
-          <button class="btn secondary" id="cinemaMode" type="button">
-            Cinema
-          </button>
-          <button class="btn secondary" id="scaleMode" type="button">
-            Visual Scale
-          </button>
+        <div class="panel-section">
+          <div class="section-header">
+            <h2>Simulation</h2>
+
+            <p>Core playback and visualization controls</p>
+          </div>
+
+          <div class="controls">
+            <button class="btn primary" id="playPause" type="button">
+              Pause
+            </button>
+
+            <button class="btn secondary" id="focusSun" type="button">
+              Sun
+            </button>
+
+            <button class="btn ghost" id="toggleLabels" type="button">
+              Labels
+            </button>
+
+            <button class="btn danger" id="resetView" type="button">
+              Reset
+            </button>
+
+            <button class="btn ghost" id="toggleOrbits" type="button">
+              Orbits
+            </button>
+
+            <button class="btn secondary" id="cinemaMode" type="button">
+              Cinema
+            </button>
+
+            <button class="btn ghost" id="scaleMode" type="button">
+              Visual Scale
+            </button>
+          </div>
         </div>
 
-        <div class="control-block">
-          <div class="control-row">
-            <span>Simulation Speed</span>
-            <span class="value-chip" id="speedValue">1.0x</span>
+        <div class="panel-section">
+          <div class="section-header">
+            <h2>Simulation Speed</h2>
+
+            <p>Adjust orbital movement speed</p>
           </div>
-          <input
-            type="range"
-            id="speedSlider"
-            min="0.1"
-            max="8"
-            step="0.1"
-            value="1"
-            aria-label="Simulation speed"
-          />
+
+          <div class="control-block">
+            <div class="control-row">
+              <span>Speed</span>
+
+              <span class="value-chip" id="speedValue"> 1.0x </span>
+            </div>
+
+            <input
+              type="range"
+              id="speedSlider"
+              min="0.1"
+              max="8"
+              step="0.1"
+              value="1"
+              aria-label="Simulation speed"
+            />
+          </div>
         </div>
 
-        <div class="control-block planet-select-block">
-          <div class="control-row">
-            <span>Jump To Planet</span>
-            <span class="value-chip">Focus</span>
+        <div class="panel-section">
+          <div class="section-header">
+            <h2>Planet Navigation</h2>
+
+            <p>Quick focus targeting system</p>
           </div>
-          <select id="planetSelect" aria-label="Select planet to focus">
-            <option value="">Choose a planet</option>
-          </select>
+
+          <div class="control-block planet-select-block">
+            <div class="control-row">
+              <span>Jump To Planet</span>
+
+              <span class="value-chip"> Focus </span>
+            </div>
+
+            <select id="planetSelect" aria-label="Select planet to focus">
+              <option value="">Choose a planet</option>
+            </select>
+          </div>
         </div>
 
-        <div class="metric-grid">
-          <div class="metric">
-            <span>Planets</span>
-            <strong>8 + Moon</strong>
+        <div class="panel-section">
+          <div class="section-header">
+            <h2>System Metrics</h2>
+
+            <p>Live simulation telemetry</p>
           </div>
-          <div class="metric">
-            <span>Camera</span>
-            <strong id="zoomValue">100%</strong>
+
+          <div class="metric-grid">
+            <div class="metric">
+              <span>Planets</span>
+
+              <strong> 8 + Moon </strong>
+            </div>
+
+            <div class="metric">
+              <span>Camera</span>
+
+              <strong id="zoomValue"> 100% </strong>
+            </div>
           </div>
         </div>
 
@@ -98,8 +163,10 @@
         <div class="planet-header">
           <div class="planet-title-group">
             <span class="planet-swatch" id="planetSwatch"></span>
+
             <div class="planet-name" id="planetName">Planet</div>
           </div>
+
           <button
             class="close-btn"
             id="closeInfo"
@@ -109,7 +176,9 @@
             ×
           </button>
         </div>
+
         <p class="planet-description" id="planetDescription"></p>
+
         <div class="detail-list" id="planetDetails"></div>
       </section>
 
@@ -119,6 +188,7 @@
 
       <aside class="legend-card">
         <strong>Mini Map</strong>
+
         Planet positions update live. Visual scale is optimized for
         presentation. Real scale uses compressed logarithmic spacing.
       </aside>
@@ -134,6 +204,10 @@
         id="systemStage"
         aria-label="Animated solar system"
       >
+        <div class="space-dust" id="spaceDust"></div>
+
+        <div class="particle-field" id="particleField"></div>
+
         <div
           class="sun"
           id="sun"
@@ -143,11 +217,11 @@
         >
           <span class="sun-label">Sun</span>
         </div>
+
         <div class="comet" id="comet"></div>
       </section>
     </main>
 
     <script src="./js/main.js"></script>
-
   </body>
 </html>
