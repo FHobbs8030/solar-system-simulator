@@ -1,0 +1,198 @@
+.particle-field {
+  position: absolute;
+  inset: 0;
+
+  overflow: hidden;
+
+  pointer-events: none;
+
+  z-index: 4;
+}
+
+.space-dust {
+  position: absolute;
+  inset: -20%;
+
+  overflow: hidden;
+
+  pointer-events: none;
+
+  z-index: 2;
+}
+
+.space-dust::before,
+.space-dust::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background-repeat: repeat;
+
+  opacity: 0.22;
+
+  will-change: transform;
+}
+
+.space-dust::before {
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.14) 1px,
+    transparent 2px
+  );
+
+  background-size: 180px 180px;
+
+  filter: blur(0.4px);
+
+  animation: dustDriftSlow 80s linear infinite;
+}
+
+.space-dust::after {
+  background-image: radial-gradient(
+    circle,
+    rgba(120, 220, 255, 0.12) 1px,
+    transparent 2px
+  );
+
+  background-size: 260px 260px;
+
+  filter: blur(0.8px);
+
+  opacity: 0.16;
+
+  animation: dustDriftFast 55s linear infinite;
+}
+
+.space-particle {
+  position: absolute;
+
+  left: var(--x);
+  top: var(--y);
+
+  width: var(--size);
+  height: var(--size);
+
+  border-radius: 50%;
+
+  opacity: var(--opacity);
+
+  pointer-events: none;
+
+  transform: translate(-50%, -50%) scale(var(--depth-scale));
+
+  will-change: transform, opacity;
+
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.82) 0%,
+    rgba(255, 255, 255, 0.42) 10%,
+    rgba(255, 255, 255, 0.12) 20%,
+    transparent 38%
+  );
+
+  filter: blur(calc(var(--blur) * 0.08)) brightness(0.92);
+
+  mix-blend-mode: normal;
+
+  animation:
+    particleDrift var(--duration) ease-in-out infinite alternate,
+    particleTwinkle var(--twinkle-duration) ease-in-out infinite;
+}
+
+.space-particle[data-type="star"] {
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0.9) 45%,
+    transparent 75%
+  );
+
+  transform: translate(-50%, -50%) scale(0.85);
+
+  filter: none;
+
+  border-radius: 50%;
+}
+
+@keyframes particleDrift {
+  0% {
+    transform: translate(-50%, -50%) translate3d(0px, 0px, 0px)
+      scale(var(--depth-scale)) rotate(0deg);
+  }
+
+  25% {
+    transform: translate(-50%, -50%)
+      translate3d(calc(var(--drift-x) * 0.25), calc(var(--drift-y) * 0.18), 0px)
+      scale(calc(var(--depth-scale) * 1.02)) rotate(1deg);
+  }
+
+  50% {
+    transform: translate(-50%, -50%)
+      translate3d(calc(var(--drift-x) * 0.5), calc(var(--drift-y) * 0.55), 0px)
+      scale(var(--depth-scale)) rotate(-1deg);
+  }
+
+  75% {
+    transform: translate(-50%, -50%)
+      translate3d(calc(var(--drift-x) * 0.78), calc(var(--drift-y) * 0.82), 0px)
+      scale(calc(var(--depth-scale) * 0.98)) rotate(0.5deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%)
+      translate3d(var(--drift-x), var(--drift-y), 0px) scale(var(--depth-scale))
+      rotate(0deg);
+  }
+}
+
+@keyframes particlePulse {
+  0%,
+  100% {
+    opacity: var(--opacity);
+  }
+
+  50% {
+    opacity: calc(var(--opacity) * 1.8);
+  }
+}
+
+@keyframes dustDriftSlow {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  100% {
+    transform: translate3d(-120px, 80px, 0) scale(1.04);
+  }
+}
+
+@keyframes dustDriftFast {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  100% {
+    transform: translate3d(180px, -120px, 0) scale(1.06);
+  }
+}
+
+@keyframes twinkle {
+  from {
+    opacity: 0.62;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes starSlide {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-180px, 120px, 0);
+  }
+}

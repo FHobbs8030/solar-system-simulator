@@ -1,0 +1,15 @@
+.scanline {
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.018),
+    rgba(255, 255, 255, 0.018) 1px,
+    transparent 1px,
+    transparent 5px
+  );
+  opacity: 0.24;
+  mix-blend-mode: normal;
+}

@@ -1,0 +1,98 @@
+.stars {
+  position: absolute;
+  inset: 0;
+
+  overflow: hidden;
+
+  pointer-events: none;
+}
+
+.stars::before,
+.stars::after {
+  content: "";
+
+  position: absolute;
+  inset: -50%;
+
+  background-repeat: repeat;
+
+  opacity: 0.9;
+
+  will-change: transform;
+}
+
+.stars-back::before {
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.55) 1px,
+    transparent 1.5px
+  );
+
+  background-size: 180px 180px;
+
+  opacity: 0.22;
+}
+
+.stars-back::after {
+  background-image: radial-gradient(
+    circle,
+    rgba(120, 180, 255, 0.35) 1px,
+    transparent 1.8px
+  );
+
+  background-size: 320px 320px;
+
+  opacity: 0.14;
+}
+
+.stars-mid::before {
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.75) 1.2px,
+    transparent 2px
+  );
+
+  background-size: 140px 140px;
+
+  opacity: 0.32;
+}
+
+.stars-mid::after {
+  background-image: radial-gradient(
+    circle,
+    rgba(150, 210, 255, 0.55) 1px,
+    transparent 1.8px
+  );
+
+  background-size: 220px 220px;
+
+  opacity: 0.18;
+}
+
+.stars-front::before {
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.95) 1.4px,
+    transparent 2px
+  );
+
+  background-size: 110px 110px;
+
+  opacity: 0.42;
+
+  filter: blur(0.2px);
+}
+
+.stars-front::after {
+  background-image: radial-gradient(
+    circle,
+    rgba(120, 220, 255, 0.75) 1.2px,
+    transparent 2px
+  );
+
+  background-size: 180px 180px;
+
+  opacity: 0.22;
+
+  filter: blur(0.3px);
+}
